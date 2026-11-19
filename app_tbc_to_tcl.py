@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """
-Macro Converter: TBC -> TCL (Streamlit Dashboard)
+Surpac Macro Converter: TBC -> TCL (Streamlit Dashboard)
 Created by: Michael Aragorn Purba
-Run in VS Code terminal: streamlit run app_tbc_to_tcl.py
+Run locally: streamlit run app_tbc_to_tcl.py
 """
 
 import io
@@ -604,7 +604,10 @@ st.set_page_config(
 )
 
 st.title("Macro Converter: `.TBC` → `.TCL`")
-st.caption("Decompiler ByteCode TclPro 1.3 (Tcl 8.3) untuk Makro GEOVIA Surpac · Created by: **Michael Aragorn Purba**")
+st.caption(
+    "Decompiler ByteCode TclPro 1.3 (Tcl 8.3) untuk Makro GEOVIA Surpac · "
+    "Created by: **Michael Aragorn Purba**"
+)
 
 if "last_result" not in st.session_state:
     st.session_state["last_result"] = None
@@ -649,7 +652,6 @@ with tab_single:
     with col_out:
         st.subheader("Output Skrip `.TCL`")
 
-        # Auto-convert on upload or button click
         if (uploaded_file is not None or convert_clicked) and raw_input.strip():
             result = convert_tbc_to_tcl(raw_input, source_name)
             st.session_state["last_result"] = result
@@ -673,7 +675,6 @@ with tab_single:
                 data=res["tcl_code"].encode("utf-8"),
                 file_name=res["output_filename"],
                 mime="text/plain",
-                type="primary",
                 use_container_width=True,
             )
 
@@ -733,7 +734,6 @@ with tab_batch:
                 data=zip_buffer.getvalue(),
                 file_name="converted_surpac_macros.zip",
                 mime="application/zip",
-                type="primary",
             )
     else:
         st.info("Pilih beberapa file `.tbc` di atas untuk melakukan konversi massal.")
