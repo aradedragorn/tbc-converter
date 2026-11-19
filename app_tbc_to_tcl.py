@@ -599,7 +599,7 @@ def convert_tbc_to_tcl(raw_text: str, source_filename: str = "macro.tbc") -> dic
 # ==============================================================================
 st.set_page_config(
     page_title="TBC → TCL Converter",
-    page_icon="⛏️",
+    page_icon="🔄",
     layout="wide",
 )
 
